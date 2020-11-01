@@ -1,0 +1,62 @@
+{
+  "name": "unlockme-backend",
+  "version": "0.0.0",
+  "description": "Backend for unlock.me platform",
+  "main": "dist/cli.js",
+  "scripts": {
+    "lint": "prettier --write src/* test/*",
+    "build": "rm -rf dist && babel src --out-dir dist && chmod +x dist/unlockme.js",
+    "dev": "babel-node src/unlockme.js",
+    "watch": "nodemon --watch ./src --watch ./config --exec npm run dev -- --"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://github.com/wekey-tech/unlockme-backend.git"
+  },
+  "author": "Wekey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wekey-tech/unlockme-backend/issues"
+  },
+  "homepage": "https://github.com/wekey-tech/unlockme-backend#readme",
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.6.1",
+    "as-table": "^1.0.55",
+    "async": "^3.2.0",
+    "aws-sdk": "^2.673.0",
+    "bcrypt": "^4.0.1",
+    "commander": "^5.1.0",
+    "cookie-parser": "^1.4.5",
+    "crypto": "^1.0.1",
+    "ejs": "^3.1.2",
+    "email-templates": "^7.0.4",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "node-polyglot": "^2.4.0",
+    "nodemailer": "^6.4.6",
+    "nodemon": "^2.0.3",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pg": "^8.0.3",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5",
+    "safe-compare": "^1.1.4",
+    "secure-random-password": "^0.2.1",
+    "typology": "^1.2.1",
+    "uuid": "^7.0.3",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
+    "esm": "^3.2.25",
+    "mocha": "^7.1.2",
+    "nyc": "^15.0.1",
+    "prettier": "^2.0.5",
+    "superagent": "^5.2.2"
+  }
+}

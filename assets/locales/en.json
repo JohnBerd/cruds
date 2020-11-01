@@ -1,0 +1,7 @@
+{
+  "hello": "hello %{name}",
+  "invitation": "%{name} invited you to join the team ZeDevs.",
+  "short_description": "ZeDevs allow you to post your need for help and receive relevant responses from experts.",
+  "signup": "Finalize my registration",
+  "link": "If the previous link does not work, you can follow this url: "
+}

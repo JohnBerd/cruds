@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <%- include('../commons/style.html') %>
+  </head>
+  <body>
+    <%- include('../commons/header.ejs') %>
+    <div class="content">
+      <p>Bonjour <%= (sponsored.firstname) %> ! </p>
+      <p>
+        Vous avez été invité à rejoindre l'application WeKeyWin!
+        <br />
+        Veuillez vous identifier avec votre e-mail et ce mot de passe provisoire, vous pourrez le changer une fois connecté ;)
+      </p>
+      <p class="center">
+        <%= (password) %>
+      </p>
+    </div>
+  </body>
+</html>

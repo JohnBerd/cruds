@@ -1,0 +1,7 @@
+{
+  "hello": "Bonjour %{name}",
+  "invitation": "%{name} vous a invité à rejoindre son équipe sur ZeDevs.",
+  "short_description": "ZeDevs vous permet de publier vos besoin d'assistance et d'obtenir les réponses d'experts.",
+  "signup": "Finaliser mon inscription",
+  "link": "Si le lien précédent ne fonctionne pas, vous pouvez vous rendre à l'adresse suivante : "
+}

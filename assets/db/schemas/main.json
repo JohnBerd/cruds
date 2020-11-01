@@ -1,0 +1,216 @@
+{
+  "extensions": ["uuid-ossp"],
+  "tables": {
+    "profiles": [
+      {
+        "name": "uuid",
+        "type": "uuid",
+        "default": "uuid_generate_v4()",
+        "primary": true
+      },
+      {
+        "name": "sponsor",
+        "type": "uuid",
+        "nullable": true,
+        "refers": { "table": "profiles", "column": "uuid" }
+      },
+      { "name": "firstname", "type": "string64", "nullable": true },
+      { "name": "lastname", "type": "string64", "nullable": true },
+      { "name": "email", "type": "email", "unique": "profileEmail" },
+      {
+        "name": "password",
+        "type": "string64",
+        "nullable": true,
+        "bcrypt": true
+      },
+      { "name": "phone", "type": "phone", "default": "''" },
+      { "name": "role", "type": "role", "default": "'member'" },
+      { "name": "metadata", "type": "json", "default": "'{}'" },
+      { "name": "status", "type": "integer", "default": "0" },
+      { "name": "win", "type": "boolean", "default": "false" },
+      { "name": "mission", "type": "boolean", "default": "false" },
+      { "name": "expotoken", "type": "string64", "nullable": true },
+      { "name": "administrative", "type": "uuid", "nullable": true },
+      { "name": "talent", "type": "uuid", "nullable": true },
+      { "name": "coach", "type": "uuid", "nullable": true }
+    ],
+    "notificationGroups": [
+      {
+        "name": "uuid",
+        "type": "uuid",
+        "default": "uuid_generate_v4()",
+        "primary": true
+      },
+      { "name": "name", "type": "string64" }
+    ],
+    "profileNotificationGroup": [
+      {
+        "name": "uuid",
+        "type": "uuid",
+        "default": "uuid_generate_v4()",
+        "primary": true
+      },
+      {
+        "name": "profile",
+        "type": "uuid",
+        "unique": "profileGroup",
+        "refers": { "table": "profiles", "column": "uuid" }
+      },
+      {
+        "name": "notificationGroup",
+        "type": "uuid",
+        "unique": "profileGroup",
+        "refers": { "table": "notificationGroups", "column": "uuid" }
+      }
+    ],
+    "sessions": [
+      { "name": "uuid", "type": "uuid", "primary": true },
+      { "name": "data", "type": "json", "nullable": true }
+    ],
+    "commercialInfos": [
+      {
+        "name": "uuid",
+        "type": "uuid",
+        "default": "uuid_generate_v4()",
+        "primary": true
+      },
+      {
+        "name": "profile",
+        "type": "uuid",
+        "refers": { "table": "profiles", "column": "uuid" }
+      },
+      { "name": "manager", "type": "string64" },
+      { "name": "client", "type": "string64" },
+      { "name": "description", "type": "string64" },
+      { "name": "comment", "type": "string64", "nullable": true },
+      { "name": "status", "type": "integer", "default": "0" }
+    ],
+    "actions": [
+      {
+        "name": "uuid",
+        "type": "uuid",
+        "default": "uuid_generate_v4()",
+        "primary": true
+      },
+      { "name": "manager", "type": "uuid", "nullable": true },
+      { "name": "type", "type": "integer", "default": "0" },
+      { "name": "reference", "type": "uuid" },
+      { "name": "comment", "type": "string64", "nullable": true },
+      { "name": "status", "type": "integer", "default": "0" }
+    ],
+    "missions": [
+      {
+        "name": "uuid",
+        "type": "uuid",
+        "default": "uuid_generate_v4()",
+        "primary": true
+      },
+      { "name": "name", "type": "string64" },
+      { "name": "client", "type": "string64", "nullable": true },
+      { "name": "location", "type": "string128", "nullable": true },
+      { "name": "contact", "type": "string64", "nullable": true },
+      { "name": "adtsell", "type": "decimal", "nullable": true },
+      { "name": "adtbuy", "type": "decimal", "nullable": true },
+      { "name": "start", "type": "timestamp", "nullable": true },
+      { "name": "duration", "type": "decimal", "nullable": true },
+      { "name": "comment", "type": "string512", "nullable": true },
+      { "name": "status", "type": "integer", "default": "0" },
+      { "name": "rythm", "type": "integer", "default": "0" },
+      {
+        "name": "talent",
+        "type": "uuid",
+        "refers": { "table": "profiles", "column": "uuid" },
+        "nullable": true
+      },
+      {
+        "name": "commercialinfo",
+        "type": "uuid",
+        "refers": { "table": "commercialInfos", "column": "uuid" },
+        "nullable": true
+      }
+    ],
+    "profileMissions": [
+      {
+        "name": "uuid",
+        "type": "uuid",
+        "default": "uuid_generate_v4()",
+        "primary": true
+      },
+      {
+        "name": "mission",
+        "type": "uuid",
+        "refers": { "table": "missions", "column": "uuid" }
+      },
+      {
+        "name": "profile",
+        "type": "uuid",
+        "refers": { "table": "profiles", "column": "uuid" }
+      },
+      { "name": "comment", "type": "string512", "nullable": true },
+      { "name": "status", "type": "integer", "default": "0" }
+    ],
+    "moods": [
+      {
+        "name": "uuid",
+        "type": "uuid",
+        "default": "uuid_generate_v4()",
+        "primary": true
+      },
+      {
+        "name": "profile",
+        "type": "uuid",
+        "refers": { "table": "profiles", "column": "uuid" }
+      },
+      { "name": "comment", "type": "string64", "nullable": true },
+      { "name": "value", "type": "integer", "default": "0" }
+    ],
+    "config": [
+      {
+        "name": "uuid",
+        "type": "uuid",
+        "default": "uuid_generate_v4()",
+        "primary": true
+      },
+      { "name": "message", "type": "string512", "nullable": true },
+      { "name": "bad", "type": "string512", "nullable": true },
+      { "name": "normal", "type": "string512", "nullable": true },
+      { "name": "good", "type": "string512", "nullable": true },
+      { "name": "administrative", "type": "uuid", "nullable": true },
+      { "name": "talent", "type": "uuid", "nullable": true },
+      { "name": "coach", "type": "uuid", "nullable": true },
+      { "name": "actionmanager", "type": "uuid", "nullable": true }
+    ],
+    "commissions": [
+      {
+        "name": "uuid",
+        "type": "uuid",
+        "default": "uuid_generate_v4()",
+        "primary": true
+      },
+      {
+        "name": "profile",
+        "type": "uuid",
+        "refers": { "table": "profiles", "column": "uuid" }
+      },
+      { "name": "description", "type": "string64" },
+      { "name": "date", "type": "timestamp" },
+      { "name": "amount", "type": "decimal" }
+    ],
+    "notifications": [
+      {
+        "name": "uuid",
+        "type": "uuid",
+        "default": "uuid_generate_v4()",
+        "primary": true
+      },
+      {
+        "name": "profile",
+        "type": "uuid",
+        "refers": { "table": "profiles", "column": "uuid" }
+      },
+      { "name": "title", "type": "string64" },
+      { "name": "body", "type": "string512" },
+      { "name": "read", "type": "boolean", "default": "false" }
+    ]
+  }
+}
